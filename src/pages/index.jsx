@@ -1,8 +1,8 @@
 import {useState} from "react";
-import TextField from "./ui/text-field";
-import WithLabel from "./ui/with-label";
+import TextField from "../ui/text-field";
+import WithLabel from "../ui/with-label";
 
-export default function () {
+export default function Homepage()  {
     let [form, setForm] = useState({
         email: "",
         name: "",
