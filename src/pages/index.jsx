@@ -1,6 +1,7 @@
 import {useState} from "react";
 import TextField from "../ui/text-field";
 import WithLabel from "../ui/with-label";
+// import {UserIcon} from "@heroicons/react";
 
 export default function Homepage() {
     const [form, setForm] = useState({
@@ -88,9 +89,10 @@ export function PrimaryButton({children, busy = false, disabled = false, ...rest
 
 export function CancelButton({children, disabled = false, ...rest}) {
     return <>
-        <Button className={`${disabled ? 'bg-gray-400 text-gray-500 cursor-not-allowed' : "bg-red-200 text-red-500"} py-2 px-8 rounded-lg`}
-                {...rest}
-                disabled={disabled}
+        <Button
+            className={`${disabled ? 'bg-gray-400 text-gray-500 cursor-not-allowed' : "bg-red-200 text-red-500"} py-2 px-8 rounded-lg`}
+            {...rest}
+            disabled={disabled}
         >
             {children}
         </Button>
@@ -105,7 +107,9 @@ export function Button({
     return <>
         <button
             disabled={disabled}
-            onClick={(e) => {!busy && onClick(e)}}
+            onClick={(e) => {
+                !busy && onClick(e)
+            }}
             className={`${defaultBaseClass} ${className ? className : ""}`}
             {...rest}
         >
