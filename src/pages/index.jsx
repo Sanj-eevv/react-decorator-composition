@@ -1,15 +1,15 @@
 import {useState} from "react";
 import TextField from "../ui/text-field";
 import WithLabel from "../ui/with-label";
-// import {UserIcon} from "@heroicons/react";
+import {UserIcon} from "@heroicons/react/solid";
 
 export default function Homepage() {
     const [form, setForm] = useState({
         email: "",
         name: "",
     });
-
     const [busy, setBusy] = useState(false);
+    const [user, setUser] = useState(undefined);
 
     const NameField = WithLabel(TextField);
     const EmailField = WithLabel(TextField);
@@ -45,11 +45,41 @@ export default function Homepage() {
             <CancelButton>
                 Cancel
             </CancelButton>
+            {!user ? (<LoginButton {...{setUser, busy, setBusy}}>
+            </LoginButton>) : <div>{user.name}</div>
+            }
         </div>
 
     </>
 }
 
+export function LoginButton({
+                                busy, setBusy = () => {
+    }, setUser = () => {
+    }
+                            },) {
+    return <PrimaryButton busy={busy} onClick={() => {
+        setBusy(true);
+        setTimeout(() => {
+            setUser({
+                name: 'Sanjeev',
+                email: 'me@you.com',
+                lastLoggedInAt: new Date(),
+            })
+            setBusy(false);
+        }, 1000);
+    }
+    }>
+        <div className={"flex gap-2 items-center"}>
+            <div>
+                <UserIcon className={"h-4 w-4"}/>
+            </div>
+            <div>
+                Log In
+            </div>
+        </div>
+    </PrimaryButton>
+}
 
 export function LinkButton({children, ...rest}) {
     return <>
