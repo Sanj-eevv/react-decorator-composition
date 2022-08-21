@@ -10,6 +10,7 @@ export default function TextField({value, onChange = () => {}, focused = false})
     return <input
         type="text"
         value={value}
+        className={"text-black px-2 focus:outline-0"}
         onChange={(e) => onChange(e.target.value)}
         ref={ref}/>
 }
