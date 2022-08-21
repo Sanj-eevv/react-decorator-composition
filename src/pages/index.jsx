@@ -16,6 +16,7 @@ export default function Homepage() {
         age: "",
     });
     const [busy, setBusy] = useState(false);
+    const [loggingIn, setLoggingIn] = useState(false);
     const [user, setUser] = useState(undefined);
 
     const NameField = WithLabel(TextField);
@@ -56,7 +57,7 @@ export default function Homepage() {
             <CancelButton>
                 Cancel
             </CancelButton>
-            {!user ? (<LoginButton {...{setUser, busy, setBusy}}>
+            {!user ? (<LoginButton {...{setUser, busy: loggingIn, setBusy: setLoggingIn}}>
             </LoginButton>) : <div>{user.name}</div>
             }
         </div>
