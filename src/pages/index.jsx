@@ -8,6 +8,9 @@ import CancelButton from "../ui/button/cancel";
 import LoginButton from "../features/auth/buttons/login";
 import IntegerField from "../ui/text-field/integer";
 
+const NameField = WithLabel(TextField);
+const EmailField = WithLabel(TextField);
+const AgeField = WithLabel(IntegerField);
 
 export default function Homepage() {
     const [form, setForm] = useState({
@@ -18,10 +21,6 @@ export default function Homepage() {
     const [busy, setBusy] = useState(false);
     const [loggingIn, setLoggingIn] = useState(false);
     const [user, setUser] = useState(undefined);
-
-    const NameField = WithLabel(TextField);
-    const EmailField = WithLabel(TextField);
-    const AgeField = WithLabel(IntegerField);
     return <>
         <div className={"flex gap-3 mt-3"}>
             <NameField value={form.name} onChange={name =>

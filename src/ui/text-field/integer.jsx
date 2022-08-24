@@ -1,13 +1,9 @@
 import TextField from "./index";
 
-export default function IntegerField({
-                                 onChange = () => {
-                                 },
-                                 ...rest
-                             },) {
-    function OnlyInteger(str) {
-        return str.replace(/[^0-9]/g, "");
-    }
+export default function IntegerField({onChange = ()=>{}, ...rest}) {
 
-    return <TextField onChange={val => onChange(OnlyInteger(val))} {...rest}/>
+    function onlyInteger(str) {
+        return str.replace(/\D/g, "");
+    }
+    return <TextField onChange={val => onChange(onlyInteger(val))} {...rest}/>
 }
